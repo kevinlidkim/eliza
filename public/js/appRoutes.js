@@ -9,8 +9,8 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 		})
 
 		.when('/eliza/DOCTOR', {
-			templateUrl: 'views/signup.html',
-			controller: 'SignUpController'
+			templateUrl: 'views/doctor.html',
+			controller: 'MainController'
 		})
 
 		.otherwise({
