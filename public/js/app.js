@@ -1,0 +1,1 @@
+angular.module('myApp', ['ngRoute', 'appRoutes', 'MainCtrl', 'UserCtrl', 'SignUpCtrl', 'LoginCtrl', 'LogoutCtrl', 'UserServ']);
