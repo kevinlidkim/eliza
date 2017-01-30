@@ -3,33 +3,14 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 	$routeProvider
 
 		// home page
-		.when('/', {
+		.when('/eliza', {
 			templateUrl: 'views/home.html',
-			controller: 'MainController',
-			access: {restricted: true}
+			controller: 'MainController'
 		})
 
-		.when('/signup', {
+		.when('/eliza/DOCTOR', {
 			templateUrl: 'views/signup.html',
-			controller: 'SignUpController',
-			access: {restricted: false}
-		})
-
-		.when('/login', {
-			templateUrl: 'views/login.html',
-			controller: 'LoginController',
-			access: {restricted: false}
-		})
-
-		.when('/logout', {
-			controller: 'LogoutController',
-			access: {restricted: true}
-		})
-
-		.when('/profile', {
-			templateUrl: 'views/profile.html',
-			controller: 'UserController',
-			access: {restricted: true}
+			controller: 'SignUpController'
 		})
 
 		.otherwise({
@@ -41,16 +22,3 @@ angular.module('appRoutes', []).config(['$routeProvider', '$locationProvider', f
 
 
 }])
-
-.run(function ($rootScope, $location, $route, UserService) {
-  $rootScope.$on('$routeChangeStart',
-    function (event, next, current) {
-      UserService.getUserStatus()
-        .then(function() {
-          if (next.access.restricted && UserService.isLoggedIn() === false) {
-            $location.path('/login');
-            $route.reload();
-          }
-        });
-  });
-});
