@@ -3,13 +3,21 @@
   <div class="form-container">
     <form class="form" ng-submit="send_text()">
       <div class="form-group">
-        <label for="send_message">Enter text</label>
-        <input type="text" id="send_text" class="form-control" ng-model="send_message"/>
+        <label for="send_message">Say something to the doctor</label>
+        <input type="text" id="input" class="form-control" ng-model="input"/>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
+  </div>
+
+  <div class="container" ng-show="reveal_msg_history()">
+    <h4>Chat history</h4>
+    <div ng-repeat="msg in msg_history track by $index">
+      <p ng-if="$even">you: {{msg}}</p>
+      <p ng-if="$odd">doctor: {{msg}}</p>
+    </div>
   </div>
 
 </div>

@@ -1,14 +1,15 @@
 angular.module('MainCtrl', []).controller('MainController', ['$scope', 'MainService', function($scope, MainService) {
 
-  $scope.input = "";
+  $scope.name_input = "";
   $scope.name = "";
   $scope.date = "";
-  $scope.send_message = "";
+  $scope.input = "";
+  $scope.msg_history = [];
 
   $scope.register = function() {
-    if ($scope.input != "") {
+    if ($scope.name_input != "") {
       var obj = {
-        name: $scope.input
+        name: $scope.name_input
       }
       MainService.register(obj)
         .then(function(data) {
@@ -18,7 +19,7 @@ angular.module('MainCtrl', []).controller('MainController', ['$scope', 'MainServ
     }
   };
 
-  $scope.reveal = function() {
+  $scope.reveal_name = function() {
     if ($scope.name != "") {
       return true;
     } else {
@@ -27,14 +28,24 @@ angular.module('MainCtrl', []).controller('MainController', ['$scope', 'MainServ
   }
 
   $scope.send_text = function() {
-    if ($scope.send_text != "") {
+    if ($scope.input != "") {
       var obj = {
-        human: $scope.send_text
+        human: $scope.input
       }
+      $scope.msg_history.push($scope.input);
       MainService.send_text(obj)
         .then(function(data) {
-          console.log(data);
+          $scope.msg_history.push(data.eliza);
+          $scope.input = "";
         })
+    }
+  }
+
+  $scope.reveal_msg_history = function() {
+    if ($scope.msg_history.length > 0) {
+      return true;
+    } else {
+      return false;
     }
   }
   

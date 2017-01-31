@@ -13,8 +13,8 @@ angular.module('MainServ', []).factory('MainService', ['$q', '$timeout', '$http'
     send_text : function(obj) {
       return $http.post('/send_text', obj)
         .then(function(data) {
-          console.log(data);
-          return data;
+          // console.log(data);
+          return data.data;
         })
     }
     

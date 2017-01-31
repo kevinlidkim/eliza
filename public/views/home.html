@@ -1,17 +1,39 @@
 <div class="jumbotron text-center">
 
-  <h4 ng-show="reveal()">Hello {{name}}, {{date}}</h4>
+  <h4 ng-show="reveal_name()">Hello {{name}}, {{date}}</h4>
 
   <div class="form-container">
     <form class="form" ng-submit="register()">
       <div class="form-group">
         <label for="name">Name</label>
-        <input type="text" id="name" class="form-control" ng-model="input"/>
+        <input type="text" id="name" class="form-control" ng-model="name_input"/>
       </div>
       <div class="form-group">
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
     </form>
+  </div>
+
+  <div ng-show="reveal_name()">
+    <div class="form-container">
+      <form class="form" ng-submit="send_text()">
+        <div class="form-group">
+          <label for="send_message">Chat with ELIZA</label>
+          <input type="text" id="input" class="form-control" ng-model="input"/>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="container" ng-show="reveal_msg_history()">
+      <h4>Chat history</h4>
+      <div ng-repeat="msg in msg_history track by $index">
+        <p ng-if="$even">you: {{msg}}</p>
+        <p ng-if="$odd">doctor: {{msg}}</p>
+      </div>
+    </div>
   </div>
 
 </div>
