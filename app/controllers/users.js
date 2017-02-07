@@ -3,16 +3,24 @@ var moment = require('moment');
 generate_nonsense = function(input) {
   if (input.includes('hello') || input.includes('hi')) {
     return 'hello';
+  } else if (input.includes('computer')) {
+    return 'i am a computer';
+  } else if (input.includes('who')) {
+    return 'i am eliza';
+  } else if (input.includes('what')) {
+    return 'what do you want peasant';
   } else if (input.includes('bye')) {
     return 'good bye';
   } else if (input.includes('nonsense')) {
     return 'what do you mean I\'m speaking nonsense?';
-  } else if (input.length < 5) {
+  } else if (input.length < 3) {
     return 'I can\'t save you but I can heal your soul';
-  } else if (input.length < 10) {
+  } else if (input.length < 6) {
     return 'where does it hurt?'
-  } else if (input.length < 15) {
+  } else if (input.length < 9) {
     return 'maybe you should go see a real doctor'
+  } else if (input.length < 12) {
+    return 'yo you download the new fire emblem game?'
   } else {
     return 'You\'re crazy and I can\'t save you';
   }
