@@ -1,7 +1,7 @@
 var moment = require('moment');
 
-generate_nonsense = function(in) {
-  input = in.toLowerCase();
+generate_nonsense = function(input_case) {
+  input = input_case.toLowerCase();
 
   if (input.includes('hello') || input.includes('hi')) {
     return 'hello';
