@@ -1,6 +1,8 @@
 var moment = require('moment');
 
-generate_nonsense = function(input) {
+generate_nonsense = function(in) {
+  input = in.toLowerCase();
+
   if (input.includes('hello') || input.includes('hi')) {
     return 'hello';
   } else if (input.includes('computer')) {
